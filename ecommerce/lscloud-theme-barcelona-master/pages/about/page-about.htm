@@ -1,0 +1,127 @@
+---
+description: 'The About Page'
+template: inner
+protocol: all
+published: true
+name: About
+url: /about
+---
+<section class="section-aboutus-page">
+    <div class="banner">
+        <img alt="" class="lazy" src="{{ theme.aboutImageBanner.thumbnail('auto','auto') }}" />  
+    </div>
+    <div class="container">
+        <div class="row about-us-top">
+
+            <div class=" col-sm-12 col-md-5">
+
+                <div class="map-holder">
+                     <div id="map" class="map center"></div> 
+                </div>
+            </div>
+            <div class=" col-sm-12 col-md-7">
+                <div class="content-holder about-us">
+                    {{ content_block('about-main') }}
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row members-holder">
+            <div  class="col-xs-12 col-sm-6 col-lg-3  ">
+                <div class="member-item">
+                    {{ content_block('person-one') }}
+                </div>
+            </div>
+            <div  class="col-xs-12 col-sm-6 col-lg-3  ">
+                <div class="member-item">
+                    {{ content_block('person-two') }}
+                </div>
+            </div>
+            <div  class="col-xs-12 col-sm-6 col-lg-3  ">
+                <div class="member-item">
+                    {{ content_block('person-three') }}
+                </div>
+            </div>
+            <div  class="col-xs-12 col-sm-6 col-lg-3  ">
+                <div class="member-item">
+                    {{ content_block('person-four') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="section-we-hire">
+    <div class="container">
+
+        <div class=" col-lg-offset-1 col-sm-7 col-lg-7">
+            <div class="hire-body">
+                <div class="title">
+                    want to be a part of us? <strong>&nbsp;we are hiring!</strong>
+                </div> 
+                <p>
+                    We have no specified needs, but present your ideas and yourself and we will contact you.
+                </p>
+            </div>
+        </div>
+        <div class="col-sm-5 col-lg-3 hire-button-holder">
+            <a href="#" class="hire-button md-button large">join our team</a>
+        </div>
+    </div>
+</section>
+
+<section class="section-about-us-more">
+    <div class="container">
+        <div class="col-xs-12 col-sm-4">
+            <div class="more-info-item">
+                {{ content_block('about-left') }}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <div class="more-info-item">
+                {{ content_block('about-center') }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="more-info-item">
+                {{ content_block('about-right') }}
+            </div>
+        </div>
+
+
+
+    </div>
+</section>
+
+<section class="section-stats">
+    <div class="container">
+        <div class="col-xs-12 col-sm-3">
+            <div class="stat-item">
+                <span class="value">9431</span>
+                <span class="title">sold products</span>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-3">
+            <div class="stat-item">
+                <span class="value">347</span>
+                <span class="title">cups of coffee</span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="stat-item">
+                <span class="value">21</span>
+                <span class="title">product returns</span>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-3">
+            <div class="stat-item">
+                <span class="value">1094</span>
+                <span class="title">satisfied clients</span>
+            </div>
+        </div>
+    </div>
+</section>
