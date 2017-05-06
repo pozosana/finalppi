@@ -91,7 +91,6 @@
                 $nombreErr = "Solo se permiten letras y espacios en blanco";
               }
             }
-
             if (empty($_POST["correo"])) {
               $correoErr = "Correo electrónico necesario";
             } else {
@@ -106,21 +105,19 @@
             } else {
               $contrasena = test_input($_POST["contrasena"]);
             }
-
             if (empty($_POST["nacimiento"])) {
               $nacimientoErr = "Debes introducir tu fecha de nacimiento.";
             } else {
               $nacimiento = test_input($_POST["nacimiento"]);
-              //if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$correo)) {
-                //$nacimientoErr = "Tu fecha de nacimiento no es válida";
-              //}
+              if ($nacimiento>date()) {
+                $nacimientoErr = "Tu fecha de nacimiento no es válida";
+              }
             }
-
             if (empty($_POST["tarjeta"])) {
               $tarjetaErr = "Debes introducir los dígitos de tu tarjeta.";
             } else {
               $tarjeta = test_input($_POST["tarjeta"]);
-              if (!preg_match("/^[0-9][9-0]{15,16}*$/",$tarjeta)) {
+              if (!preg_match("/^[1-9][0-9]{15,16}$/",$tarjeta)) {
                 $tarjetaErr = "Solo se permiten máximo 16 dígitos";
               }
             }
@@ -155,46 +152,47 @@
                       <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                       <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
                       <form action="validar.php" method="post" name="sentMessage" id="contactForm" novalidate>
+                        <p><span class="error">* campo requerido.</span></p>
                           <div class="row control-group">
                               <div class="form-group col-xs-12 floating-label-form-group controls">
                                   <label>Nombre</label>
-                                  <input type="text" value="<?php echo $nombre;?>" class="form-control" placeholder="Nombre completo" id="nombre" name="nombre" required data-validation-required-message="Please enter your name.">
-                                  <p class="help-block text-danger"><?php echo $nombreErr;?></p>
+                                  <input type="text" value="<?php echo $nombre;?>" class="form-control" placeholder="Nombre Apellido" id="nombre" name="nombre" required data-validation-required-message="Please enter your name.">
+                                  <span class="error">* <?php echo $nombreErr;?></span>
                               </div>
                           </div>
                           <div class="row control-group">
                               <div class="form-group col-xs-12 floating-label-form-group controls">
                                   <label>Correo electrónico</label>
-                                  <input type="email" value="<?php echo $correo;?>" class="form-control" placeholder="Correo electrónico" id="correo" name="correo" required data-validation-required-message="Please enter your email address.">
-                                  <p class="help-block text-danger"><?php echo $correoErr;?></p>
+                                  <input type="email" value="<?php echo $correo;?>" class="form-control" placeholder="ejemplo@dominio.com" id="correo" name="correo" required data-validation-required-message="Please enter your email address.">
+                                  <span class="error">* <?php echo $correoErr;?></span>
                               </div>
                           </div>
                           <div class="row control-group">
                               <div class="form-group col-xs-12 floating-label-form-group controls">
                                   <label>Contraseña</label>
-                                  <input type="password" class="form-control" placeholder="Nueva contraseña" id="contrasena" name="contrasena" required data-validation-required-message="Please enter your phone number.">
-                                  <p class="help-block text-danger"><?php echo $contrasenaErr;?></p>
+                                  <input type="password" class="form-control" placeholder="********" id="contrasena" name="contrasena" required data-validation-required-message="Please enter your phone number.">
+                                  <span class="error">* <?php echo $contrasenaErr;?></span>
                               </div>
                           </div>
                           <div class="row control-group">
                               <div class="form-group col-xs-12 floating-label-form-group controls">
                                   <label for="fecha">Fecha de nacimiento</label>
-                                  <input type="date" value="<?php echo $nacimiento;?>" class="form-control" placeholder="Fecha de nacimiento" id="nacimiento" name="nacimiento" required data-validation-required-message="Please enter your birth date.">
-                                  <p class="help-block text-danger"><?php echo $nacimientoErr;?></p>
+                                  <input type="date" value="<?php echo $nacimiento;?>" class="form-control" placeholder="dd/mm/aaaa" id="nacimiento" name="nacimiento" required data-validation-required-message="Please enter your birth date.">
+                                  <span class="error">* <?php echo $nacimientoErr;?></span>
                               </div>
                           </div>
                           <div class="row control-group">
                               <div class="form-group col-xs-12 floating-label-form-group controls">
                                   <label>Numero de tarjeta</label>
-                                  <input type="text" value="<?php echo $tarjeta;?>" class="form-control" placeholder="Número de tarjeta de crédito/débito" id="tarjeta" name="tarjeta" required data-validation-required-message="Please enter your credit card number.">
-                                  <p class="help-block text-danger"><?php echo $tarjetaErr;?></p>
+                                  <input type="text" value="<?php echo $tarjeta;?>" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX" id="tarjeta" name="tarjeta" required data-validation-required-message="Please enter your credit card number.">
+                                  <span class="error">* <?php echo $tarjetaErr;?></span>
                               </div>
                           </div>
                           <div class="row control-group">
                               <div class="form-group col-xs-12 floating-label-form-group controls">
                                   <label>Código postal</label>
-                                  <input type="text" value="<?php echo $codigo;?>"class="form-control" placeholder="Código postal" id="codigoPostal" name="codigoPostal" required data-validation-required-message="Please enter your phone number.">
-                                  <p class="help-block text-danger"><?php echo $codigoErr;?></p>
+                                  <input type="number" value="<?php echo $codigo;?>"class="form-control" placeholder="XXXXX" id="codigo" name="codigo" required data-validation-required-message="Please enter your phone number.">
+                                  <span class="error">* <?php echo $codigoErr;?></span>
                               </div>
                           </div>
                           <br>
