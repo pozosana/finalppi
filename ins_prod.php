@@ -27,6 +27,7 @@
 </head>
 
 <body id="page-top" class="index">
+
   <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,7 +46,7 @@
   <body id="page-top" class="index">
 
     <div class="col-lg-12">
-      <h1 class="page-header">Usuarios</h1>
+      <h1 class="page-header">Productos</h1>
     </div>
 
     <div class="container">
@@ -56,44 +57,66 @@
             <div class="row control-group">
               <div class="form-group col-xs-12 floating-label-form-group controlss">
                 <label>Nombre</label>
-                <input type="text" class="form-control" placeholder="Nombre Apellido" id="nombre" name="nombre" required data-validation-required-message="Por favor ingresa tu nombre">
+                <input type="text" class="form-control" placeholder="Nombre del producto" id="nombre" name="nombre"
+                required data-validation-required-message="Por favor ingresa el nombre del producto">
               </div>
             </div>
             <div class="row control-group">
               <div class="form-group col-xs-12 floating-label-form-group controls">
-                <label>Correo electrónico</label>
-                <input type="email" class="form-control" placeholder="ejemplo@dominio.com" id="correo" name="correo" required data-validation-required-message="Por favor ingresa tu correo electrónico">
+                <label>Descripción</label>
+                <textarea form="contactForm" class="form-control" name="descripcion" id="descripcion" cols="55" wrap="soft"></textarea>
               </div>
             </div>
             <div class="row control-group">
               <div class="form-group col-xs-12 floating-label-form-group controls">
-                <label>Contraseña</label>
-                <input type="password" class="form-control" placeholder="********" id="contrasena" name="contrasena" required data-validation-required-message="Por favor ingresa una contraseña para tu cuenta">
+                <label>Categoría</label><br>
+                <input type="radio" name="idC" value="6"> Pasteles<br>
+                <input type="radio" name="idC" value="7"> Brownies y Galletas<br>
+                <input type="radio" name="idC" value="8"> Pies y tartas<br>
+                <input type="radio" name="idC" value="9"> Panadería<br>
               </div>
             </div>
             <div class="row control-group">
               <div class="form-group col-xs-12 floating-label-form-group controls">
-                <label for="fecha">Fecha de nacimiento</label>
-                <input type="date" class="form-control" placeholder="dd/mm/aaaa" id="nacimiento" name="nacimiento" required data-validation-required-message="Por favor ingresa tu fecha de nacimiento">
+                <label for="fecha">Nombre de la foto</label>
+                <input type="text" class="form-control" placeholder="nombre.formato" id="foto" name="foto"
+                required data-validation-required-message="Por favor ingresa el nombre de la foto">
               </div>
             </div>
             <div class="row control-group">
               <div class="form-group col-xs-12 floating-label-form-group controls">
-                <label>Numero de tarjeta</label>
-                <input type="number" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX" id="tarjeta" name="tarjeta" required data-validation-required-message="Por favor ingresa el número de tu tarjeta">
+                <label>Precio</label>
+                <input type="number" step="0.01" class="form-control" placeholder="00.00" id="precio" name="precio"
+                required data-validation-required-message="Ingresa el precio de venta del producto">
               </div>
             </div>
             <div class="row control-group">
               <div class="form-group col-xs-12 floating-label-form-group controls">
-                <label>Código postal</label>
-                <input type="number" class="form-control" placeholder="XXXXX" id="codigo" name="codigo" required data-validation-required-message="Por favor ingresa tu código postal">
+                <label>Cantidad en almacen</label>
+                <input type="number" class="form-control" placeholder="00" id="cantidad" name="cantidad"
+                required data-validation-required-message="Por favor ingresa la cantidad de producto que existe en almacen">
+              </div>
+            </div>
+
+            <div class="row control-group">
+              <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Fabricante</label>
+                <input type="text" class="form-control" placeholder="Nombre del fabricante" id="fabricante" name="fabricante"
+                required data-validation-required-message="Por favor ingresa el nombre del fabricante">
+              </div>
+            </div>
+            <div class="row control-group">
+              <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Origen</label>
+                <input type="text" class="form-control" placeholder="País de origen" id="origen" name="origen"
+                required data-validation-required-message="Por favor ingresa el país de origen">
               </div>
             </div>
             <br>
             <div id="success"></div>
             <div class="row">
               <div class="form-group col-xs-12">
-                <input type="submit" name="submit" value="Registrar usuario">
+                <input type="submit" name="submit" value="Ingresar producto">
               </div>
             </div>
             <div class="row"><br><br><br>
@@ -101,7 +124,7 @@
                 <a href="bases.php" class="button">Cambiar de tabla</a>
               </div>
               <div align="center" class="form-group col-xs-6">
-                <a href="usuariosDB.php" class="button">Cambiar de Operacion</a>
+                <a href="productosDB.php" class="button">Cambiar de Operacion</a>
               </div>
             </div>
           </form>
@@ -118,14 +141,16 @@
       }
       // escape variables for security
       $nombre = $_POST['nombre'];
-      $correo = $_POST['correo'];
-      $contrasena = $_POST['contrasena'];
-      $nacimiento = $_POST['nacimiento'];
-      $tarjeta = $_POST['tarjeta'];
-      $codigo = $_POST['codigo'];
+      $descripcion = $_POST['descripcion'];
+      $idCat = $_POST['idC'];
+      $foto = $_POST['foto'];
+      $precio = $_POST['precio'];
+      $cantidad = $_POST['cantidad'];
+      $fabricante = $_POST['fabricante'];
+      $origen = $_POST['origen'];
 
-      $sql="INSERT INTO Usuarios (id, Nombre, Correo, Contrasena, Nacimiento, Tarjeta, CodigoPostal)
-      VALUES (NULL, '$nombre', '$correo', '$contrasena', '$nacimiento', '$tarjeta', '$codigo');";
+      $sql="INSERT INTO Productos (id, Nombre, Descripcion, idCategorias, Foto, Precio, Cantidad_en_almacen, Fabricante, Origen)
+      VALUES (NULL, '$nombre', '$descripcion', '$idCat', '$foto', '$precio', '$cantidad', '$fabricante', '$origen');";
 
       if (!mysqli_query($con,$sql)) {
         die('Error: ' . mysqli_error($con));
@@ -135,7 +160,7 @@
         echo '</div>';
         $_POST = array();
       }
-    mysqli_close($con);
+      mysqli_close($con);
     }
     ?>
 
