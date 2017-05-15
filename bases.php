@@ -49,14 +49,14 @@
   <tr><td><div align="center">¿Qué tabla deseas modificar?</div></td></tr>
 
   <tr><td><div align="center"><br>
-  <FORM METHOD=post ACTION="usuariosdb.php">
-   <input type="submit" name="boton" value="USRS">
+  <FORM METHOD=post ACTION="ventasdb.php">
+   <input type="submit" name="boton" value="Ventas">
   </FORM>
   </div></td></tr>
 
   <tr><td><div align="center"><br>
   <FORM METHOD=post ACTION="productosdb.php">
-   <input type="submit" name="boton" value="PROD">
+   <input type="submit" name="boton" value="Productos">
   </FORM>
   </div></td></tr>
 
@@ -68,23 +68,6 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <ul class="list-inline">
-            <li>
-              <a href="#">Home</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#about">Acerca de nosotros</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#services">Servicios</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#contact">Contacto</a>
-            </li>
-          </ul>
           <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
         </div>
       </div>
