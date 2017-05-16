@@ -31,7 +31,7 @@
   </nav>
 
   <div class="col-lg-12">
-    <h1 class="page-header">Inventarios</h1>
+    <h1 class="page-header">Actualizar información del producto</h1>
   </div>
 
   <?PHP
@@ -40,113 +40,173 @@
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
-  $sql_cat="SELECT * FROM categorias;";
-  $sql_pro="SELECT * FROM productos;";
-  $categorias=mysqli_query($con,$sql_cat);
+  $sql_pro="SELECT id, Nombre FROM productos;";
   $productos=mysqli_query($con,$sql_pro);
-  if (!mysqli_query($con,$sql_cat) || !mysqli_query($con,$sql_pro)) {
+  if (!mysqli_query($con,$sql_pro)) {
     die('Error: ' . mysqli_error($con));
   }else{
     echo '<div class="alert alert-success">';
     echo '<strong>Categorias correctamente cargadas.</strong>';
     echo '</div>';
   }
-  $catR=mysqli_num_rows($categorias);
-  $catC=mysqli_num_fields($categorias);
-  $proR=mysqli_num_rows($productos);
-  $proC=mysqli_num_fields($productos);
   ?>
 
-    <form action="" method="post" name="sentMessage" id="contactForm" onsubmit="return validateForm()">
-    <table class="table" width="80%">
-      <tr>
-        <th colspan="2">Selecciona el producto</th>
-      </tr>
-      <tr><td colspan="2"><div align="center">
-        <select name="id" size="5">
-          <?PHP
-          while($row = mysqli_fetch_assoc($productos)) {
-              $option .= '<option value = "'.$row['id'].'">'.$row['nombre'].'</option>';
-          }
-          ?>
-        </select></div></td></tr>
-        <tr>
-          <th>Cambiar</th>
-          <th>Nueva información</th>
-        </tr>
-        <tr>
-          <td align="center"><input name="op[]" type="checkbox" value="nombre"/></td>
-          <td>Nombre:<input name="nombre_text" size="30" type="text"/></td>
-        </tr>
-        <tr>
-          <td align="center"><input name="op[]" value="descripcion" type="checkbox"/></td>
-          <td>Descripción:<textarea form="contactForm" class="form-control" name="descripcion" id="descripcion" cols="55" wrap="soft"></textarea></td>
-        </tr>
-        <tr>
-          <td align="center"><input name="op[]" value="tnum" type="checkbox"/></td>
-          <td align="left">Categorías:<br>
-            <input type="radio" name="idC" value="6"> Pasteles<br>
-            <input type="radio" name="idC" value="7"> Brownies y Galletas<br>
-            <input type="radio" name="idC" value="8"> Pies y tartas<br>
-            <input type="radio" name="idC" value="9"> Panadería<br>
-          </td>
-        </tr>
-        <tr>
-          <td align="center"><input name="op[]" type="checkbox" value="nombre"/></td>
-          <td>Nombre de foto:<input name="nombre_text" size="30" type="text"/></td>
-        </tr>
-        <tr>
-          <td align="center"><input name="op[]" type="checkbox" value="precio"/></td>
-          <td>Precio:<input name="nombre_text" size="30" type="number"/></td>
-        </tr>
-        <tr>
-          <td align="center"><input name="op[]" type="checkbox" value="cantidad"/></td>
-          <td>Cantidad en almacen:<input name="nombre_text" size="30" type="number" step="0.01"/></td>
-        </tr>
-        <tr>
-          <td align="center"><input name="op[]" type="checkbox" value="fabricante"/></td>
-          <td>Fabricante:<input name="nombre_text" size="30" type="text"/></td>
-        </tr>
-        <tr>
-          <td align="center"><input name="op[]" type="checkbox" value="origen"/></td>
-          <td>Origen:<input name="nombre_text" size="30" type="text"/></td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center">
-            <br><input name="cambiar" type="submit" value="Cambiar">
-          </td>
-        </tr>
-      </table>
-
-
-
-
-      <br><br>
-      <TABLE width="100%">
-        <tr><td><div align="center"><br><br><br>
-        </div></td></tr>
-      </TABLE>
-
-    </body>
-    <!-- Footer -->
-    <footer>
-
-
-      <div class="row"><br><br><br>
-        <div align="center" class="form-group col-xs-6">
-          <a href="bases.php" class="button">Cambiar de tabla</a>
-        </div>
-        <div align="center" class="form-group col-xs-6">
-          <a href="productosDB.php" class="button">Cambiar de Operacion</a>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <form action="" method="post" name="sentMessage" id="contactForm" onsubmit="return validateForm()">
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controlss">
+              <select name="idProd">
+                <option value="0">Please Select</option>
+                <?php
+                while($row = mysqli_fetch_array($productos)) {
+                  echo "<option value=" . $row['id'] . ">" . $row['Nombre'] . "</option>";
+                }
+                ?>
+              </select>
+            </div>
           </div>
-        </div>
-      </div>
-    </footer>
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controlss">
+              <input name="op[]" type="checkbox" value="nombre"/>Nombre:
+              <input type="text" class="form-control" placeholder="Nombre del producto" name="tnombre">
+            </div>
+          </div>
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <input name="op[]" type="checkbox" value="descripcion"/>Descripcion:
+              <textarea form="contactForm" class="form-control" name="tdescripcion" cols="55" wrap="soft"></textarea>
+            </div>
+          </div>
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <input name="op[]" type="checkbox" value="categoria"/>Categorías:<br>
+              <input type="radio" name="idC" value="6" checked> Pasteles<br>
+              <input type="radio" name="idC" value="7"> Brownies y Galletas<br>
+              <input type="radio" name="idC" value="8"> Pies y tartas<br>
+              <input type="radio" name="idC" value="9"> Panadería<br>
+            </div>
+          </div>
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <input name="op[]" type="checkbox" value="foto"/>Nombre de la foto:
+              <input type="text" class="form-control" placeholder="nombre.formato" name="tfoto">
+            </div>
+          </div>
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <input name="op[]" type="checkbox" value="precio"/>Precio:
+              <input type="number" step="0.01" class="form-control" placeholder="00.00" name="tprecio">
+            </div>
+          </div>
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <input name="op[]" type="checkbox" value="cantidad"/>Cantidad en almacen:
+              <input type="number" class="form-control" placeholder="00" name="tcantidad">
+            </div>
+          </div>
 
-    </html>
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <input name="op[]" type="checkbox" value="fabricante"/>Fabricante:
+              <input type="text" class="form-control" placeholder="Nombre del fabricante" name="tfabricante">
+            </div>
+          </div>
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <input name="op[]" type="checkbox" value="nombre"/>Origen:
+              <input type="text" class="form-control" placeholder="País de origen" name="torigen">
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <div class="row">
+            <div class="form-group col-xs-12">
+              <input type="submit" name="submit" value="Ingresar producto">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <?php
+  if(isset($_POST['submit'])){
+    $con=mysqli_connect("localhost","ana","ana","final");
+    // Check connection
+    if (mysqli_connect_errno()) {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+    // escape variables for security
+    $idP = $_POST['idProd'];
+    $nombre = trim($_POST['tnombre']);
+    $descripcion = $_POST['tdescripcion'];
+    $idCat = $_POST['idC'];
+    $foto = trim($_POST['tfoto']);
+    $precio = $_POST['tprecio'];
+    $cantidad = trim($_POST['tcantidad']);
+    $fabricante = trim($_POST['tfabricante']);
+    $origen = trim($_POST['torigen']);
+    $chk = $_POST["op"];
+
+    foreach ($chk as $opcion) {
+      switch ($opcion) {
+        case "nombre":
+        $a_actualizar="UPDATE productos SET Nombre='$nombre' WHERE id=$idP;";
+        $b_actualizar=mysqli_query($con, $a_actualizar);
+        break;
+        case "descripcion":
+        $a_actualizar="UPDATE productos SET Descripcion='$descripcion' WHERE id=$idP;";
+        $b_actualizar=mysqli_query($con, $a_actualizar);
+        break;
+        case "categoria":
+        $a_actualizar="UPDATE productos SET idCategorias='$idCat' WHERE id=$idP;";
+        $b_actualizar=mysqli_query($con, $a_actualizar);
+        break;
+        case "foto":
+        $a_actualizar="UPDATE productos SET Foto='$foto' WHERE id=$idP;";
+        $b_actualizar=mysqli_query($con, $a_actualizar);
+        break;
+        case "precio":
+        $a_actualizar="UPDATE productos SET Precio='$precio' WHERE id=$idP;";
+        $b_actualizar=mysqli_query($con, $a_actualizar);
+        break;
+        case "cantidad":
+        $a_actualizar="UPDATE productos SET Cantidad_en_almacen='$cantidad' WHERE id=$idP;";
+        $b_actualizar=mysqli_query($con, $a_actualizar);
+        break;
+        case "fabricante":
+        $a_actualizar="UPDATE productos SET Fabricante='$fabricante' WHERE id=$idP;";
+        $b_actualizar=mysqli_query($con, $a_actualizar);
+        break;
+        case "origen":
+        $a_actualizar="UPDATE productos SET Origen='$origen' WHERE id=$idP;";
+        $b_actualizar=mysqli_query($con, $a_actualizar);
+        break;
+      }
+    }
+  }
+  ?>
+
+</body>
+<!-- Footer -->
+<footer>
+  <div class="row"><br><br><br>
+    <div align="center" class="form-group col-xs-6">
+      <a href="bases.php" class="button">Cambiar de tabla</a>
+    </div>
+    <div align="center" class="form-group col-xs-6">
+      <a href="productosDB.php" class="button">Cambiar de Operacion</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>

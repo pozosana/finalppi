@@ -40,7 +40,7 @@
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    $sql="SELECT o.id, o.monto_a_pagar, o.fecha_compra, u.correo, p.nombre, c.nombre, r.cantidad
+    $sql="SELECT o.id, o.monto_a_pagar, o.fecha_compra, u.correo, p.nombre AS 'Producto', c.nombre, r.cantidad
     FROM ordenes o, ordenes_productos r, productos p, usuarios u, categorias c
     WHERE r.idOrden=o.id AND r.idProductos=p.id AND p.idCategorias=c.id AND u.id=o.idUsuarios
     ORDER BY o.id;";
@@ -71,7 +71,7 @@
       echo "<td>" . $row['monto_a_pagar'] . "</td>";
       echo "<td>" . $row['fecha_compra'] . "</td>";
       echo "<td>" . $row['correo'] . "</td>";
-      echo "<td>" . $row['nombre'] . "</td>";
+      echo "<td>" . $row['Producto'] . "</td>";
       echo "<td>" . $row['nombre'] . "</td>";
       echo "<td>" . $row['cantidad'] . "</td>";
       echo "</tr>";
@@ -79,27 +79,17 @@
 
     mysqli_close($con);
     ?>
+  </table>
 
-
-    <br><br>
-    <TABLE width="100%">
-      <tr><td><div align="center"><br><br><br>
-      </div></td></tr>
-
-    </TABLE>
+    <div align="center"><br><br><br><br>
+    <FORM METHOD=post ACTION="bases.php">
+     <input type="submit" name="boton" value="Cambiar de tabla">
+    </FORM>
+    </div>
 
   </body>
   <!-- Footer -->
   <footer>
-
-    <div class="row"><br><br><br>
-      <div align="center" class="form-group col-xs-6">
-        <a href="bases.php" class="button">Cambiar de tabla</a>
-      </div>
-      <div align="center" class="form-group col-xs-6">
-        <a href="productosDB.php" class="button">Cambiar de Operacion</a>
-      </div>
-    </div>
     <div class="container">
       <div class="row">
         <div class="col-lg-12">

@@ -43,7 +43,7 @@
     $sql="SELECT p.id, p.Nombre, Descripcion, c.nombre, Precio, Cantidad_en_almacen, Fabricante, Origen
     FROM productos p, categorias c
     WHERE p.idCategorias=c.id
-    ORDER BY Cantidad_en_almacen DESC;";
+    ORDER BY p.id ASC;";
 
     if (!mysqli_query($con,$sql)) {
       die('Error: ' . mysqli_error($con));
