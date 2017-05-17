@@ -18,12 +18,6 @@
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
 </head>
 
 <body id="page-top" class="index">
@@ -42,49 +36,35 @@
     </div>
   </nav>
 
-<body>
-  <form method="post" action="" id="contactForm">
-    <table style=100% align="center">
-      <tr>
-        <td valign="middle"><br><label>Correo electrónico:</label></td><td valign="middle"><input name="correo" size="20" type="text" maxlength="30" class="form-control"/></td>
-      </tr>
-      <tr>
-        <td valign="middle"><label>Contrasena:</label></td><td valign="middle"><input name="contrasena" size="20" type="password" maxlength="8" class="form-control"/></td>
-      </tr>
-      <tr>
-        <td align="center" colspan="2">
-          <br><input name='Ingresar' type='submit' value='Ingresar'>
-          <br>
-        </td>
-      </tr>
-    </table>
+  <body>
+    <form method="post" action="" id="contactForm">
+      <table style=100% align="center">
+        <tr>
+          <td valign="middle"><br><label>Correo electrónico:</label></td><td valign="middle"><input name="correo" size="20" type="text" maxlength="30" class="form-control"/></td>
+        </tr>
+        <tr>
+          <td valign="middle"><label>Contrasena:</label></td><td valign="middle"><input name="contrasena" size="20" type="password" maxlength="8" class="form-control"/></td>
+        </tr>
+        <tr>
+          <td align="center" colspan="2">
+            <br><input name='Ingresar' type='submit' value='Ingresar'>
+            <br>
+          </td>
+        </tr>
+      </table>
 
       <?PHP
       if(isset($_POST['Ingresar'])){
-
-      $con=mysqli_connect("localhost","ana","ana","final");
-      // Check connection
-      if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-      }
-      // escape variables for security
-      $correo = $_POST['correo'];
-      $contrasena = $_POST['contrasena'];
-
-      $queryU="SELECT * FROM usuarios WHERE correo='$correo';";
-      $resU=pg_Exec($conn,$queryU);
-      $nU=pg_NumRows($resU);
-        if($nU>0){
-          $queryC="SELECT * FROM usuarios WHERE correo='$correo' AND contrasena='$contrasena';";
-          $resC=pg_Exec($conn,$queryC);
-          $nC=pg_NumRows($resC);
-          if($nC>0){
-            echo '<script>window.location.href="bases.php";</script>';
-            exit();
-          }else{
-            echo "*Contraseña incorrecta";
-            exit();
-          }
+        $con=mysqli_connect("localhost","ana","ana","final");
+        if (mysqli_connect_errno()) {
+          echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
+        // escape variables for security
+        $correo = $_POST['correo'];
+        $contrasena = $_POST['contrasena'];        
+        if($correo=="admin" && $contrasena=="admin"){
+          echo '<script>window.location.href="bases.php";</script>';
+          exit();
         }else{
           echo "*Usuario inválido<br>";
           exit();
