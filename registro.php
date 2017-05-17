@@ -70,6 +70,9 @@
           <li>
             <a href="index.html#contact">Contacto</a>
           </li>
+          <li>
+            <a href="carrito.php">Mi carrito</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -188,21 +191,13 @@
       <div class="row">
         <div class="col-lg-12">
           <ul class="list-inline">
-            <li>
-              <a href="#">Home</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#about">Acerca de nosotros</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#services">Servicios</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#contact">Contacto</a>
-            </li>
+              <li>
+                  <a href="index.html">Home</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                  <a href="nosotros.html">Acerca de nosotros</a>
+              </li>
           </ul>
           <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
         </div>
