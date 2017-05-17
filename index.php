@@ -139,9 +139,17 @@ session_start();
 
   <?php
   if (!isset($_SESSION['userid'])) {
-    echo '<section id="sesion" style="display:inline;">';
+    echo '<style>
+    #sesion{
+      display: inline;
+    }
+    </style>';
   }else{
-    echo '<section id="sesion" style="display:none;">';
+    echo '<style>
+    #sesion{
+      display: none;
+    }
+    </style>';
   }
   ?>
 

@@ -12,7 +12,7 @@ session_start();
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Catálogo de postres</title>
+  <title>Quiénes somos</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/thumbnail-gallery.css" rel="stylesheet">
 </head>
@@ -86,6 +86,16 @@ session_start();
         <h1 class="page-header">Quiénes somos</h1>
       </div>
 
+      <div class="content">
+          <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+            <div class="field-items">
+              <div class="field-item even" property="content:encoded">
+      <p>Descubre la historia de Dessert World y entérate como desde 1884
+        <strong>somos una pastelería que te ofrece variedad en pan</strong>
+        dulce, así como de pan salado recién horneado y una deliciosa línea de pasteles.</p>
+      <p> <strong>Gracias a ti, hoy contamos con más de 250 puntos de venta.</strong></p>
+      </div></div></div>  </div>
+      <img class="img-responsive" src="img/nosotros.jpg" alt="">
 
     </div>
     <hr>
