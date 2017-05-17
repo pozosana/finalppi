@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["userid"] = 24;
+//$_SESSION["userid"] = 24;
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ $_SESSION["userid"] = 24;
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Dessert World</a>
+        <a class="navbar-brand" href="index.php">Dessert World</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -41,13 +41,36 @@ $_SESSION["userid"] = 24;
             <a href="registro.php">Regístrate</a>
           </li>
           <li>
-            <a class="page-scroll" href="index.html#sesion">Iniciar Sesión</a>
+              <a href="index.php#contact">Contacto</a>
           </li>
           <li>
-            <a href="index.html#contact">Contacto</a>
+            <?php
+            if (!isset($_SESSION['userid'])) {
+              echo '<a class="page-scroll" href="index.php#sesion">Iniciar Sesión</a>';
+            }else{
+              echo "<form action='' method='post'>";
+              echo '<button type="submit" name="cerrar" class="btn btn-link" style:"text-decoration:none;">Cerrar Sesión</button>';
+              echo "</form>";
+
+              if(isset($_POST['cerrar'])){
+                session_destroy();
+                $_SESSION['userid']=='';
+                echo "<script>window.location.href='index.php';</script>";
+              }
+            }
+            ?>
           </li>
           <li>
-            <a href="carrito.php">Mi carrito <span class="glyphicon glyphicon-shopping-cart"></span></a>
+            <?php
+            if (isset($_SESSION['userid'])) {
+              echo '<div id="carrito" style="display:inline;">';
+            }else{
+              echo '<div id="carrito" style="display:none;">';
+            }
+            ?>
+            <div id="carrito">
+              <a href="carrito.php">Mi carrito <span class="glyphicon glyphicon-shopping-cart"></span></a>
+            </div>
           </li>
         </ul>
       </div>
@@ -75,7 +98,7 @@ $_SESSION["userid"] = 24;
           <div class="col-lg-12">
             <ul class="list-inline">
               <li>
-                <a href="index.html">Home</a>
+                <a href="index.php">Home</a>
               </li>
               <li class="footer-menu-divider">&sdot;</li>
               <li>

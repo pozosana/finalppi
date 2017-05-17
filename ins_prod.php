@@ -9,12 +9,8 @@
   <meta name="author" content="">
 
   <title>Portal de administrador</title>
-
-  <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
   <link href="css/thumbnail-gallery.css" rel="stylesheet">
-  <!-- Custom Fonts -->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -24,7 +20,6 @@
 
   <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
-      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header page-scroll">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -32,7 +27,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Dessert World</a>
+        <a class="navbar-brand" href="index.php">Dessert World</a>
       </div>
     </div>
   </nav>
@@ -47,7 +42,6 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <form action="" method="post" name="sentMessage" id="contactForm" onsubmit="return validateForm()">
-            <!--<p><span class="error">* Campo requerido</span></p>-->
             <div class="row control-group">
               <div class="form-group col-xs-12 floating-label-form-group controlss">
                 <label>Nombre</label>
