@@ -21,13 +21,6 @@ $_SESSION["userid"] = 24;
   <!-- Custom CSS -->
   <link href="css/thumbnail-gallery.css" rel="stylesheet">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
 </head>
 
 <body>
@@ -61,7 +54,7 @@ $_SESSION["userid"] = 24;
             <a href="index.html#contact">Contacto</a>
           </li>
           <li>
-            <a href="carrito.php">Mi carrito</a>
+            <a href="carrito.php">Mi carrito <span class="glyphicon glyphicon-shopping-cart"></span></a>
           </li>
         </ul>
       </div>
@@ -203,7 +196,7 @@ $_SESSION["userid"] = 24;
           $x++;
         }
         mysqli_query($con,"INSERT INTO ordenes(id, Monto_a_pagar, Fecha_compra, idUsuarios)
-          VALUES (NULL, $total, CURRENT_TIMESTAMP(), {$_SESSION['userid']});");
+        VALUES (NULL, $total, CURRENT_TIMESTAMP(), {$_SESSION['userid']});");
         $orden=mysqli_query($con,"SELECT MAX(id) FROM ordenes;");
         while($row = mysqli_fetch_array($orden)) {
           $idO = $row['MAX(id)'];
@@ -217,6 +210,9 @@ $_SESSION["userid"] = 24;
           die('Error: ' . mysqli_error($con));
         }else{
           echo "<meta http-equiv='refresh' content='0'>";
+          echo '<div class="alert alert-success">';
+          echo '<strong>Tus datos fueron agregados exitosamente</strong>';
+          echo '</div>';
         }
         mysqli_close($con);
         $has_shopped=0;
